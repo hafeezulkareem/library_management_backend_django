@@ -32,9 +32,11 @@ class TransactionsView(ListCreateAPIView):
             if member.debt >= 500:
                return Response({"message": "Member debt exceeds 500"}, status=status.HTTP_400_BAD_REQUEST)
 
-            book_transaction = Transaction.objects.get(book_id=book_id, member_id=member_id, returned_datetime=None)
-            if book_transaction:
+            try:
+               book_transaction = Transaction.objects.get(book_id=book_id, member_id=member_id, returned_datetime=None)
                return Response({"message": "Member already took the book"}, status=status.HTTP_400_BAD_REQUEST)
+            except Transaction.DoesNotExist:
+               pass
 
             serializer = TransactionSerializer(data=payload)
             if serializer.is_valid():
@@ -60,7 +62,7 @@ class TransactionDetailView(RetrieveDestroyAPIView):
 
 
 class TransactionReturnView(APIView):
-   def patch(self, request):
+   def post(self, request):
       payload = request.data
       book_id = payload.get("book_id")
       member_id = payload.get("member_id")

@@ -7,10 +7,11 @@ from library_api.views.transactions import TransactionsView, TransactionDetailVi
 
 urlpatterns = [
    path("books/", BooksView.as_view()),
+   path("books/import/", BooksView.as_view()),
    path("book/<int:pk>/", BookDetailView.as_view()),
    path("members/", MembersView.as_view()),
    path("member/<int:pk>/", MemberDetailView.as_view()),
    path("transactions/", TransactionsView.as_view()),
    path("transaction/<int:pk>/", TransactionDetailView.as_view()),
-   path("book/return", TransactionReturnView.as_view())
+   path("book/return/", TransactionReturnView.as_view())
 ]

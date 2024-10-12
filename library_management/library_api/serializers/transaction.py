@@ -12,9 +12,9 @@ class TransactionSerializer(serializers.ModelSerializer):
 class BookReturnSerializer(serializers.Serializer):
    member_id = serializers.IntegerField()
    book_id = serializers.IntegerField()
-   fee_paid = serializers.IntegerField()
+   fee_paid = serializers.IntegerField(required=False)
 
    def validate_fee_paid(self, value):
-      if isinstance(value, str) or value < 0:
+      if value is not None and (isinstance(value, str) or value < 0):
          raise serializers.ValidationError("Fee must be a positive integer")
       return value
