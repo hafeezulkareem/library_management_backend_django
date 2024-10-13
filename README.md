@@ -9,7 +9,7 @@ The app provides APIs to manage books at a library
 5. Run the app using `python manage.py runserver`
 6. Use this [web app](https://github.com/hafeezulkareem/library_management_frontend) as client
 
-## UI App glimpse
+## UI app glimpse
 ![books](https://github.com/hafeezulkareem/repos_images/blob/main/books.png?raw=true)
 ![add_book](https://github.com/hafeezulkareem/repos_images/blob/main/add_book.png?raw=true)
 ![issue_book](https://github.com/hafeezulkareem/repos_images/blob/main/issue_book.png?raw=true)
